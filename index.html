@@ -1,82 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Groupmate_ - Login & Registration</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groupmate_ - Login & Registration</title>
+  <link rel="stylesheet" href="style.css">
+  <style> /* Basic inline styles for better feedback - replace with your style.css */
+    .error-message {
+      color: red;
+      margin-top: 5px;
+      font-size: 0.9em;
+    }
+    .success-message {
+      color: green;
+      margin-top: 5px;
+      font-size: 0.9em;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Groupmate_</div>
-  </header>
+  <header>
+    <div class="logo">Groupmate_</div>
+  </header>
 
-  <main>
-    <div class="form-container">
-      <div class="form-tabs">
-        <button id="loginTab" class="active">Login</button>
-        <button id="registerTab">Register</button>
-      </div>
-      <div class="form-content">
-        <form id="loginForm" onsubmit="return handleLogin(event)">
-          <input type="text" placeholder="Username or Email" required>
-          <input type="password" placeholder="Password" required>
-          <div class="remember-me">
-            <input type="checkbox" id="loginRememberMe">
-            <label for="loginRememberMe">Remember Me</label>
-          </div>
-          <button type="submit">Login</button>
-        </form>
-        <form id="registerForm" onsubmit="return handleRegister(event)" style="display: none;">
-          <input type="text" placeholder="Username" required>
-          <input type="email" placeholder="Email" required>
-          <input type="password" placeholder="Password" required>
-          <div class="remember-me">
-            <input type="checkbox" id="registerRememberMe">
-            <label for="registerRememberMe">Remember Me</label>
-          </div>
-          <button type="submit">Register</button>
-        </form>
-      </div>
-    </div>
-  </main>
+  <main>
+    <div class="form-container">
+      <div class="form-tabs">
+        <button id="loginTab" class="active">Login</button>
+        <button id="registerTab">Register</button>
+      </div>
+      <div class="form-content">
+        <form id="loginForm" onsubmit="return handleLogin(event)">
+          <input type="text" id="loginUsernameEmail" placeholder="Username or Email" required>
+          <input type="password" id="loginPassword" placeholder="Password" required>
+          <div class="remember-me">
+            <input type="checkbox" id="loginRememberMe">
+            <label for="loginRememberMe">Remember Me</label>
+          </div>
+          <button type="submit">Login</button>
+          <div id="loginError" class="error-message" style="display: none;"></div>
+        </form>
+        <form id="registerForm" onsubmit="return handleRegister(event)" style="display: none;">
+          <input type="text" id="registerUsername" placeholder="Username" required>
+          <input type="email" id="registerEmail" placeholder="Email" required>
+          <input type="password" id="registerPassword" placeholder="Password" required>
+          <div class="remember-me">
+            <input type="checkbox" id="registerRememberMe">
+            <label for="registerRememberMe">Remember Me</label>
+          </div>
+          <button type="submit">Register</button>
+          <div id="registerError" class="error-message" style="display: none;"></div>
+          <div id="registerSuccess" class="success-message" style="display: none;"></div>
+        </form>
+      </div>
+    </div>
+  </main>
 
-  <script>
-    // Toggle between login and register forms
-    const loginTab = document.getElementById('loginTab');
-    const registerTab = document.getElementById('registerTab');
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
+  <script>
+    // --- Helper Functions ---
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
 
-    loginTab.addEventListener('click', () => {
-      loginTab.classList.add('active');
-      registerTab.classList.remove('active');
-      loginForm.style.display = 'block';
-      registerForm.style.display = 'none';
-    });
+    function displayError(elementId, message) {
+      const errorElement = document.getElementById(elementId);
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
 
-    registerTab.addEventListener('click', () => {
-      registerTab.classList.add('active');
-      loginTab.classList.remove('active');
-      registerForm.style.display = 'block';
-      loginForm.style.display = 'none';
-    });
+    function hideError(elementId) {
+      const errorElement = document.getElementById(elementId);
+      errorElement.style.display = 'none';
+    }
 
-    function handleLogin(e) {
-      e.preventDefault();
-      // Perform login validation here if needed.
-      // On success, redirect to profile page.
-      window.location.href = 'profile.html';
-      return false;
-    }
+    function displaySuccess(elementId, message) {
+      const successElement = document.getElementById(elementId);
+      successElement.textContent = message;
+      successElement.style.display = 'block';
+      setTimeout(() => { // Hide success message after a delay
+        successElement.style.display = 'none';
+      }, 3000); // 3 seconds
+    }
 
-    function handleRegister(e) {
-      e.preventDefault();
-      // Perform registration steps here.
-      // On success, redirect to profile page.
-      window.location.href = 'profile.html';
-      return false;
-    }
-  </script>
+    // --- Local Storage User Management ---
+    function registerUser(username, email, password) {
+      let users = JSON.parse(localStorage.getItem('users') || '[]');
+      if (users.find(user => user.username === username || user.email === email)) {
+        return false; // Username or email already exists
+      }
+      users.push({ username: username, email: email, password: password }); // WARNING: Storing plain text password - VERY INSECURE
+      localStorage.setItem('users', JSON.stringify(users));
+      return true; // Registration successful
+    }
+
+    function loginUser(usernameOrEmail, password) {
+      let users = JSON.parse(localStorage.getItem('users') || '[]');
+      const user = users.find(user => user.username === usernameOrEmail || user.email === usernameOrEmail);
+      if (user && user.password === password) { // WARNING: Comparing plain text passwords - VERY INSECURE
+        return user; // Login successful, return user object
+      }
+      return null; // Login failed
+    }
+
+    function rememberLogin(username) {
+      if (username) {
+        localStorage.setItem('rememberedUser', username);
+      } else {
+        localStorage.removeItem('rememberedUser');
+      }
+    }
+
+    function getRememberedUser() {
+      return localStorage.getItem('rememberedUser');
+    }
+
+    function clearRememberedLogin() {
+      localStorage.removeItem('rememberedUser');
+    }
+
+
+    // --- Form Handling ---
+    const loginTab = document.getElementById('loginTab');
+    const registerTab = document.getElementById('registerTab');
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+
+    loginTab.addEventListener('click', () => {
+      loginTab.classList.add('active');
+      registerTab.classList.remove('active');
+      loginForm.style.display = 'block';
+      registerForm.style.display = 'none';
+      hideError('loginError'); // Hide login error message when switching tabs
+      hideError('registerError'); // Hide register error if visible
+      hideError('registerSuccess'); // Hide register success message if visible
+    });
+
+    registerTab.addEventListener('click', () => {
+      registerTab.classList.add('active');
+      loginTab.classList.remove('active');
+      registerForm.style.display = 'block';
+      loginForm.style.display = 'none';
+      hideError('loginError'); // Hide login error if visible
+      hideError('registerError'); // Hide register error message when switching tabs
+      hideError('registerSuccess'); // Hide register success message if visible
+    });
+
+    function handleLogin(e) {
+      e.preventDefault();
+      hideError('loginError'); // Clear previous error
+
+      const usernameEmail = document.getElementById('loginUsernameEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const rememberMe = document.getElementById('loginRememberMe').checked;
+
+      const user = loginUser(usernameEmail, password);
+
+      if (user) {
+        if (rememberMe) {
+          rememberLogin(user.username);
+        } else {
+          clearRememberedLogin();
+        }
+        window.location.href = 'profile.html'; // Redirect on successful login
+        return false; // Prevent default form submission (though redirect happens anyway)
+      } else {
+        displayError('loginError', 'Invalid username/email or password.');
+        return false; // Prevent form submission and redirect
+      }
+    }
+
+    function handleRegister(e) {
+      e.preventDefault();
+      hideError('registerError'); // Clear previous error
+      hideError('registerSuccess'); // Clear previous success
+
+      const username = document.getElementById('registerUsername').value;
+      const email = document.getElementById('registerEmail').value;
+      const password = document.getElementById('registerPassword').value;
+      const rememberMe = document.getElementById('registerRememberMe').checked;
+
+      if (!username || username.length < 3) {
+        displayError('registerError', 'Username must be at least 3 characters.');
+        return false;
+      }
+      if (!isValidEmail(email)) {
+        displayError('registerError', 'Invalid email format.');
+        return false;
+      }
+      if (password.length < 6) {
+        displayError('registerError', 'Password must be at least 6 characters.');
+        return false;
+      }
+
+      if (registerUser(username, email, password)) {
+        displaySuccess('registerSuccess', 'Registration successful!');
+        document.getElementById('registerForm').reset(); // Clear form on success
+        setTimeout(() => { // Automatically switch to login tab after registration success
+          loginTab.click();
+        }, 3000); // 3 seconds delay before switching to login tab
+        return true; // Indicate registration was handled
+      } else {
+        displayError('registerError', 'Username or email already taken.');
+        return false;
+      }
+    }
+
+    // --- Remember Me Initialization on Page Load ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const rememberedUsername = getRememberedUser();
+      if (rememberedUsername) {
+        // Simulate auto-login (in a real app, you'd securely verify the session)
+        window.location.href = 'profile.html'; // Redirect to profile if remembered user
+        // Optionally, you could pre-fill the username in the login form instead of auto-redirecting:
+        // document.getElementById('loginUsernameEmail').value = rememberedUsername;
+        // loginTab.click(); // Switch to login tab and pre-fill username
+      }
+    });
+
+  </script>
 </body>
 </html>
