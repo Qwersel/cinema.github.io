@@ -18,13 +18,15 @@
         <button id="registerTab">Register</button>
       </div>
       <div class="form-content">
-        <!-- Login Form -->
         <form id="loginForm" onsubmit="return handleLogin(event)">
           <input type="text" placeholder="Username or Email" required>
           <input type="password" placeholder="Password" required>
+          <div class="remember-me">
+            <input type="checkbox" id="rememberMe">
+            <label for="rememberMe">Remember Me</label>
+          </div>
           <button type="submit">Login</button>
         </form>
-        <!-- Register Form -->
         <form id="registerForm" onsubmit="return handleRegister(event)" style="display: none;">
           <input type="text" placeholder="Username" required>
           <input type="email" placeholder="Email" required>
