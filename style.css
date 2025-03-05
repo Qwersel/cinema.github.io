@@ -1,26 +1,29 @@
+/* style.css */
+
 body {
   font-family: sans-serif;
   margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; /* Ensure footer stays at bottom */
+  background-color: #f4f4f4; /* Light background color */
+  color: #333; /* Dark text color */
 }
 
 header {
-  background-color: #333;
+  background-color: #3498db; /* Blue header background */
   color: white;
-  padding: 10px 20px;
+  padding: 20px 0;
   text-align: center;
 }
 
 .logo {
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: bold;
 }
 
 main {
-  flex: 1;
+  flex-grow: 1; /* Allow main to take up available space */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,32 +31,38 @@ main {
 }
 
 .form-container {
-  background-color: #f4f4f4;
-  padding: 20px;
+  background-color: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  /* Added min-height to ensure consistent height */
-  min-height: 350px; /* Adjust as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 400px; /* Limit form width */
 }
 
 .form-tabs {
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .form-tabs button {
   flex: 1;
-  padding: 10px;
+  padding: 10px 15px;
   border: none;
-  background-color: #ddd;
+  background-color: #eee; /* Light grey tab background */
+  color: #666; /* Grey tab text color */
   cursor: pointer;
-  font-weight: bold;
+  font-size: 1em;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 8px 8px 0 0; /* Rounded top corners */
 }
 
 .form-tabs button.active {
-  background-color: #4CAF50; /* Green */
-  color: white;
+  background-color: #ddd; /* Slightly darker grey for active tab */
+  color: #333; /* Darker text for active tab */
+}
+
+.form-tabs button:first-child {
+  border-right: 1px solid #ccc; /* Separator between tabs */
 }
 
 .form-content form {
@@ -62,32 +71,69 @@ main {
 }
 
 .form-content input {
+  margin-bottom: 15px;
   padding: 10px;
-  margin-bottom: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-size: 1em;
 }
 
-.form-content button[type="submit"] {
-  padding: 10px;
-  background-color: #4CAF50; /* Green */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.form-content button[type="submit"]:hover {
-  background-color: #45a049;
+.form-content input:focus {
+  outline: none;
+  border-color: #3498db; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Subtle shadow on focus */
 }
 
 .remember-me {
   display: flex;
   align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-.remember-me label {
-  margin-left: 5px;
+.remember-me input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.form-content button[type="submit"] {
+  padding: 12px 20px;
+  border: none;
+  background-color: #3498db; /* Blue button background */
+  color: white;
+  cursor: pointer;
+  font-size: 1.1em;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.form-content button[type="submit"]:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+  font-size: 0.9em;
+}
+
+.success-message {
+  color: green;
+  margin-top: 5px;
+  font-size: 0.9em;
+}
+
+/* Responsive adjustments (optional) */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 20px;
+  }
+
+  .form-tabs button {
+    padding: 8px 10px;
+    font-size: 0.9em;
+  }
+
+  .form-content input,
+  .form-content button[type="submit"] {
+    font-size: 1em;
+  }
 }
