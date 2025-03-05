@@ -1,95 +1,91 @@
-/* Global Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  body {
-    background: url("images/background.jpg") no-repeat center center fixed;
-    background-size: cover;
-    /* Fallback color */
-    background-color: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  /* Header */
-  header {
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  header .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  /* Main Content */
-  main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Form Container */
-  .form-container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 300px;
-  }
-  
-  /* Tabs for toggling forms */
-  .form-tabs {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-  }
-  
-  .form-tabs button {
-    background: none;
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-  }
-  
-  .form-tabs button.active {
-    border-color: #333;
-    font-weight: bold;
-  }
-  
-  /* Form Styles */
-  .form-content form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-content form input {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .form-content form button {
-    padding: 10px;
-    border: none;
-    background: #333;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .form-content form button:hover {
-    background: #555;
-  }
-  
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.form-container {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.form-tabs {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.form-tabs button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background-color: #ddd;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form-tabs button.active {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.form-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-content input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-content button[type="submit"] {
+  padding: 10px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-content button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.remember-me label {
+  margin-left: 5px;
+}
