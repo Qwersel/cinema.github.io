@@ -30,7 +30,7 @@
     <div class="form-box">
         <div class="login-container" id="login">
             <div class="top">
-                <span>Don't have an account? <a href="#">Sign Up</a></span>
+                <span>Don't have an account? <a href="#" id="toRegisterFromLogin">Sign Up</a></span>
                 <header>Login</header>
             </div>
             <form id="loginForm">
@@ -61,7 +61,7 @@
 
         <div class="register-container" id="register">
             <div class="top">
-                <span>Have an account? <a href="#">Login</a></span>
+                <span>Have an account? <a href="#" id="toLoginFromRegister">Login</a></span>
                 <header>Sign Up</header>
             </div>
             <form id="registerForm">
@@ -119,6 +119,8 @@
     const loginFormElement = document.getElementById("loginForm");
     const registerFormElement = document.getElementById("registerForm");
     const passwordMismatch = document.getElementById("passwordMismatch");
+    const toRegisterFromLogin = document.getElementById("toRegisterFromLogin");
+    const toLoginFromRegister = document.getElementById("toLoginFromRegister");
 
     function toggleMenu() {
         navMenu.classList.toggle("responsive");
@@ -140,6 +142,16 @@
     registerBtn.addEventListener("click", () => {
         showForm(registerForm, registerBtn, loginForm, loginBtn);
     });
+
+    toRegisterFromLogin.addEventListener("click", (e) => {
+        e.preventDefault();
+        showForm(registerForm, registerBtn, loginForm, loginBtn);
+    })
+
+    toLoginFromRegister.addEventListener("click", (e) => {
+        e.preventDefault();
+        showForm(loginForm, loginBtn, registerForm, registerBtn);
+    })
 
     loginFormElement.addEventListener("submit", (event) => {
         event.preventDefault();
