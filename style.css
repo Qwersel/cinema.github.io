@@ -1,144 +1,33 @@
-/* POPPINS FONT */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-*{  
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+@media only screen and (max-width: 540px) {
+    .wrapper {
+        min-height: 100vh;
+        padding: 20px;
+    }
+    .form-box {
+        width: 100%;
+        /* Let the height adjust based on content */
+        min-height: 500px;
+        height: auto;
+        padding: 20px;
+        margin-top: 120px; /* to avoid overlapping with the nav bar */
+        background: rgba(39,39,39,0.6); /* optional: to give a slight background to the forms */
+        border-radius: 10px;
+    }
+    /* Remove absolute positioning on mobile so forms stack normally */
+    .login-container,
+    .register-container {
+        width: 100%;
+        position: relative;
+        left: 0;
+        right: 0;
+        transition: none;
+        opacity: 1;
+        margin-bottom: 20px;
+    }
+    header {
+        font-size: 24px;
+    }
+    .two-forms {
+        flex-direction: column;
+    }
 }
-
-body{
-    background: url("images/1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    overflow: hidden;
-}
-
-.wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 110vh;
-    background: rgba(39, 39, 39, 0.4);
-}
-
-/* Navigation Bar */
-.nav{
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    height: 100px;
-    line-height: 100px;
-    background: linear-gradient(rgba(39,39,39, 0.6), transparent);
-    z-index: 100;
-}
-
-.nav-logo p{
-    color: white;
-    font-size: 25px;
-    font-weight: 600;
-}
-
-.nav-menu ul{
-    display: flex;
-}
-
-.nav-menu ul li{
-    list-style-type: none;
-}
-
-.nav-menu ul li .link{
-    text-decoration: none;
-    font-weight: 500;
-    color: #fff;
-    padding-bottom: 15px;
-    margin: 0 25px;
-}
-
-.link:hover, .active{
-    border-bottom: 2px solid #fff;
-}
-
-.nav-button .btn{
-    width: 130px;
-    height: 40px;
-    font-weight: 500;
-    background: rgba(255, 255, 255, 0.4);
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: .3s ease;
-}
-
-.btn:hover{
-    background: rgba(255, 255, 255, 0.3);
-}
-
-#registerBtn{
-    margin-left: 15px;
-}
-
-.btn.white-btn{
-    background: rgba(255, 255, 255, 0.7);
-}
-
-.btn.white-btn:hover{
-    background: rgba(255, 255, 255, 0.5);
-}
-
-.nav-menu-btn{
-    display: none;
-}
-
-/* Form Box */
-.form-box{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 512px;
-    height: 420px;
-    overflow: hidden;
-    z-index: 2;
-}
-
-.login-container{
-    position: absolute;
-    left: 4px;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    transition: .5s ease-in-out;
-}
-
-.register-container{
-    position: absolute;
-    right: -520px;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    transition: .5s ease-in-out;
-}
-
-.top span{
-    color: #fff;
-    font-size: small;
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-}
-
-.top span a{
-    font-weight: 500;
-    color: #fff;
-    margin-left: 5px;
-}
-
-header{
-    color: #fff;
-    font-size: 30px;
-    t
