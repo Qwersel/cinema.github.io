@@ -1,33 +1,181 @@
-/* style.css */
-/* POPPINS FONT */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Groupmate_</title>
+</head>
+<body>
+<div class="wrapper">
+    <nav class="nav">
+        <div class="nav-logo">
+            <p>Groupmate_</p>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <ul>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <button class="btn white-btn" id="loginBtn">Sign In</button>
+            <button class="btn" id="registerBtn">Sign Up</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu"></i>
+        </div>
+    </nav>
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-body{
-    background: url("images/1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    overflow: hidden;
-}
-.wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 110vh;
-    background: rgba(39, 39, 39, 0.4);
-}
-.nav{
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    height: 100px;
-    line-height: 100px;
-    background: linear-gradient(rgba(39
+    <div class="form-box">
+        <div class="login-container" id="login">
+            <div class="top">
+                <span>Don't have an account? <a href="#">Sign Up</a></span>
+                <header>Login</header>
+            </div>
+            <form id="loginForm">
+                <div class="input-box">
+                    <label for="loginUsername">Username or Email</label>
+                    <input type="text" id="loginUsername" class="input-field" placeholder="Username or Email" required>
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="input-box">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="input-field" placeholder="Password" required>
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="input-box">
+                    <button type="submit" class="submit">Sign In</button>
+                </div>
+            </form>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="login-check">
+                    <label for="login-check"> Remember Me </label>
+                </div>
+                <div class="two">
+                    <label><a href="#">Forgot password?</a></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-container" id="register">
+            <div class="top">
+                <span>Have an account? <a href="#">Login</a></span>
+                <header>Sign Up</header>
+            </div>
+            <form id="registerForm">
+                <div class="two-forms">
+                    <div class="input-box">
+                        <label for="registerFirstName">Firstname</label>
+                        <input type="text" id="registerFirstName" class="input-field" placeholder="Firstname" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <label for="registerLastName">Lastname</label>
+                        <input type="text" id="registerLastName" class="input-field" placeholder="Lastname" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" class="input-field" placeholder="Email" required>
+                    <i class="bx bx-envelope"></i>
+                </div>
+                <div class="input-box">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" class="input-field" placeholder="Password" required>
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="input-box">
+                    <label for="registerConfirmPassword">Confirm Password</label>
+                    <input type="password" id="registerConfirmPassword" class="input-field" placeholder="Confirm Password" required>
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="input-box">
+                    <button type="submit" class="submit">Register</button>
+                </div>
+            </form>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="register-check">
+                    <label for="register-check"> Remember Me</label>
+                </div>
+                <div class="two">
+                    <label><a href="#">Terms & conditions</a></label>
+                </div>
+            </div>
+            <div id="passwordMismatch" style="color: red;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const navMenu = document.getElementById("navMenu");
+    const loginBtn = document.getElementById("loginBtn");
+    const registerBtn = document.getElementById("registerBtn");
+    const loginForm = document.getElementById("login");
+    const registerForm = document.getElementById("register");
+    const loginFormElement = document.getElementById("loginForm");
+    const registerFormElement = document.getElementById("registerForm");
+    const passwordMismatch = document.getElementById("passwordMismatch");
+
+    function toggleMenu() {
+        navMenu.classList.toggle("responsive");
+    }
+
+    function showForm(formToShow, buttonToHighlight, formToHide, buttonToUnhighlight) {
+        formToShow.style.left = "4px";
+        formToHide.style.right = "-520px";
+        buttonToHighlight.classList.add("white-btn");
+        buttonToUnhighlight.classList.remove("white-btn");
+        formToShow.style.opacity = 1;
+        formToHide.style.opacity = 0;
+    }
+
+    loginBtn.addEventListener("click", () => {
+        showForm(loginForm, loginBtn, registerForm, registerBtn);
+    });
+
+    registerBtn.addEventListener("click", () => {
+        showForm(registerForm, registerBtn, loginForm, loginBtn);
+    });
+
+    loginFormElement.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const username = document.getElementById("loginUsername").value;
+        const password = document.getElementById("loginPassword").value;
+        localStorage.setItem("username", username);
+        window.location.href = "placeholder.html";
+    });
+
+    registerFormElement.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const password = document.getElementById("registerPassword").value;
+        const confirmPassword = document.getElementById("registerConfirmPassword").value;
+
+        if (password !== confirmPassword) {
+            passwordMismatch.textContent = "Passwords do not match.";
+            return;
+        }
+
+        const firstName = document.getElementById("registerFirstName").value;
+        const lastName = document.getElementById("registerLastName").value;
+        const email = document.getElementById("registerEmail").value;
+
+        localStorage.setItem("username", firstName);
+        localStorage.setItem("name", firstName);
+        window.location.href = "placeholder.html";
+    });
+
+    if (localStorage.getItem("username")) {
+        showForm(loginForm, loginBtn, registerForm, registerBtn);
+    } else {
+        showForm(registerForm, registerBtn, loginForm, loginBtn);
+    }
+
+    document.querySelector(".nav-menu-btn i").addEventListener('click', toggleMenu);
+
+</script>
+</body>
+</html>
