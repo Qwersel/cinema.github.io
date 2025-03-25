@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url("images/1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: rgba(39, 39, 39, 0.4);
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    padding: 0 50px;
+    background: linear-gradient(rgba(39,39,39, 0.6), transparent);
+    z-index: 100;
+}
+
+.nav-logo p {
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu ul li {
+    list-style-type: none;
+}
+
+.nav-menu ul li .btn {
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    transition: 0.3s ease-in-out;
+}
+
+.nav-menu ul li .btn:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px); /* Subtracting nav height */
+}
+
+/* First Box (Profile Photo and Info) */
+.profile-box1 {
+    width: 250px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 10px;
+    padding: 30px;
+    border-radius: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+/* Second Box (Major, Course, Interests, Languages) */
+.profile-box2 {
+    width: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 10px;
+    padding: 30px;
+    border-radius: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.profile-photo {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.photo-label {
+    position: absolute;
+    display: flex;
+    cursor: pointer;
+    font-size: 12px;
+    text-align: center;
+    color: rgb(66, 62, 62);
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.profile-photo:hover .photo-label {
+    opacity: 1;
+}
+
+.profile-photo img {
+    display: block;
+}
+
+.profile-info label {
+    display: block;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.profile-info input,
+.profile-info select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.profile-info select {
+    cursor: pointer;
+}
+
+.profile-info input::placeholder {
+    color: white;
+}
+
+.profile-info input:hover,
+.profile-info select:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Similar styling for the second box */
+.profile-box2 label {
+    display: block;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.profile-box2 input,
+.profile-box2 select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.profile-box2 input::placeholder {
+    color: white;
+}
+
+#customGenderLabel {
+    display: none;
+}
