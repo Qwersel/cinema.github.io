@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #movie-catalog {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .movie-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: 250px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .movie-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .movie-info {
+            margin-top: 10px;
+        }
+
+        .movie-info h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .movie-info p {
+            font-size: 14px;
+        }
+
+        #add-movie-button {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #add-movie-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; padding: 20px;">Movie Catalog</h1>
+    
+    <div id="movie-catalog"></div>
+
+    <div style="text-align: center;">
+        <button id="add-movie-button" onclick="window.location.href='operator.html'">Add a New Movie</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
