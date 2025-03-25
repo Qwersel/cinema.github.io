@@ -27,19 +27,14 @@
                 <div class="profile-photo">
                     <input type="file" id="photoUpload" accept="image/*" hidden>
                     <label for="photoUpload" class="photo-label">Click to add photo</label>
-                    <img id="profileImage" src="" alt="Profile Photo">
+                    <img id="profileImage" scr="" alt="Profile Photo">
                 </div>
-
+    
                 <div class="profile-info">
-                    <label>Name: 
-                        <input type="text" id="nameField" placeholder="Enter name">
-                    </label>
+                    <label>Name: <input type="text" placeholder="Enter name"></label>
                     <label>Student Num: <input type="text" placeholder="Enter student number"></label>
-                    
-                    <label>Age:
-                        <input type="int" id="age" placeholder="Enter age">
-                    </label>
-
+                    <label>Age: <input type="text" placeholder="Enter student age"></label>
+    
                     <label>Gender:
                         <select id="gender">
                             <option value="" disabled selected>Select gender</option>
@@ -48,28 +43,33 @@
                             <option value="Other">Other</option>
                         </select>
                     </label>
-
+    
                     <label id="customGenderLabel" style="display: none;">Specify Gender: 
                         <input type="text" id="customGender">
                     </label>
                 </div>
             </div>
+            <div class="profile-box2">
+                <label>Major: <input type="text" placeholder="Enter major"></label>
+                <label>Course: <input type="text" placeholder="Enter course"></label>
+                <label>Interests: <input type="text" placeholder="Enter interests"></label>
+
+                <label>Preferred Language:
+                    <select id="languages" multiple>
+                        <option value="English">English</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Russian">Russian</option>
+                    </select>
+                </label>
+            </div>
         </div>
     </div>
 
     <script>
-        document.getElementById("homeBtn").addEventListener("click", function() {
-            window.location.href = "index.html"; // Redirect to home page
-        });
-
-        // Populate age dropdown
-        const ageSelect = document.getElementById("age");
-        for (let i = 14; i <= 50; i++) {
-            let option = document.createElement("option");
-            option.value = i;
-            option.textContent = i;
-            ageSelect.appendChild(option);
-        }
 
         // Show/hide custom gender field
         document.getElementById("gender").addEventListener("change", function() {
@@ -94,14 +94,8 @@
             }
         });
 
-        // Set name from login (if available)
-        document.addEventListener("DOMContentLoaded", function() {
-            const username = localStorage.getItem("username");
-            if (username) {
-                document.getElementById("nameField").value = username;
-            }
-        });
     </script>
 
 </body>
 </html>
+
