@@ -27,7 +27,6 @@
     </nav>
 
     <div class="form-box">
-      <!-- Note: only one of these should have the "active" class at a time -->
       <div class="login-container active" id="login">
         <div class="top">
           <span>Don't have an account? <a href="#" id="toRegisterFromLogin">Sign Up</a></span>
@@ -48,140 +47,17 @@
             <button type="submit" class="btn submit">Sign In</button>
           </div>
         </form>
-        <div class="two-col">
-          <div class="one">
-            <input type="checkbox" id="login-check">
-            <label for="login-check"> Remember Me </label>
-          </div>
-          <div class="two">
-            <label><a href="#">Forgot password?</a></label>
-          </div>
-        </div>
-      </div>
-
-      <div class="register-container" id="register">
-        <div class="top">
-          <span>Have an account? <a href="#" id="toLoginFromRegister">Login</a></span>
-          <header>Sign Up</header>
-        </div>
-        <form id="registerForm">
-          <div class="two-forms">
-            <div class="input-box">
-              <label for="registerFirstName">Firstname</label>
-              <input type="text" id="registerFirstName" class="input-field" placeholder="Firstname" required>
-              <i class="bx bx-user"></i>
-            </div>
-            <div class="input-box">
-              <label for="registerLastName">Lastname</label>
-              <input type="text" id="registerLastName" class="input-field" placeholder="Lastname" required>
-              <i class="bx bx-user"></i>
-            </div>
-          </div>
-          <div class="input-box">
-            <label for="registerEmail">Email</label>
-            <input type="email" id="registerEmail" class="input-field" placeholder="Email" required>
-            <i class="bx bx-envelope"></i>
-          </div>
-          <div class="input-box">
-            <label for="registerPassword">Password</label>
-            <input type="password" id="registerPassword" class="input-field" placeholder="Password" required>
-            <i class="bx bx-lock-alt"></i>
-          </div>
-          <div class="input-box">
-            <label for="registerConfirmPassword">Confirm Password</label>
-            <input type="password" id="registerConfirmPassword" class="input-field" placeholder="Confirm Password" required>
-            <i class="bx bx-lock-alt"></i>
-          </div>
-          <div class="input-box">
-            <button type="submit" class="btn submit">Register</button>
-          </div>
-        </form>
-        <div class="two-col">
-          <div class="one">
-            <input type="checkbox" id="register-check">
-            <label for="register-check"> Remember Me</label>
-          </div>
-          <div class="two">
-            <label><a href="#">Terms & conditions</a></label>
-          </div>
-        </div>
-        <div id="passwordMismatch" style="color: red;"></div>
       </div>
     </div>
   </div>
 
   <script>
-    const navMenu = document.getElementById("navMenu");
-    const loginBtn = document.getElementById("loginBtn");
-    const registerBtn = document.getElementById("registerBtn");
-    const loginForm = document.getElementById("login");
-    const registerForm = document.getElementById("register");
-    const loginFormElement = document.getElementById("loginForm");
-    const registerFormElement = document.getElementById("registerForm");
-    const passwordMismatch = document.getElementById("passwordMismatch");
-    const toRegisterFromLogin = document.getElementById("toRegisterFromLogin");
-    const toLoginFromRegister = document.getElementById("toLoginFromRegister");
-
-    function toggleMenu() {
-      navMenu.classList.toggle("responsive");
-    }
-
-    function showForm(formToShow, buttonToHighlight, formToHide, buttonToUnhighlight) {
-      formToShow.classList.add("active");
-      formToHide.classList.remove("active");
-      buttonToHighlight.classList.add("white-btn");
-      buttonToUnhighlight.classList.remove("white-btn");
-    }
-
-    loginBtn.addEventListener("click", () => {
-      showForm(loginForm, loginBtn, registerForm, registerBtn);
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const username = document.getElementById("loginUsername").value;
+        localStorage.setItem("username", username);
+        window.location.href = "profile.html"; // Redirect to profile page
     });
-
-    registerBtn.addEventListener("click", () => {
-      showForm(registerForm, registerBtn, loginForm, loginBtn);
-    });
-
-    toRegisterFromLogin.addEventListener("click", (e) => {
-      e.preventDefault();
-      showForm(registerForm, registerBtn, loginForm, loginBtn);
-    });
-
-    toLoginFromRegister.addEventListener("click", (e) => {
-      e.preventDefault();
-      showForm(loginForm, loginBtn, registerForm, registerBtn);
-    });
-
-    loginFormElement.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const username = document.getElementById("loginUsername").value;
-      localStorage.setItem("username", username);
-      window.location.href = "placeholder.html";
-    });
-
-    registerFormElement.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const password = document.getElementById("registerPassword").value;
-      const confirmPassword = document.getElementById("registerConfirmPassword").value;
-
-      if (password !== confirmPassword) {
-        passwordMismatch.textContent = "Passwords do not match.";
-        return;
-      }
-
-      const firstName = document.getElementById("registerFirstName").value;
-      localStorage.setItem("username", firstName);
-      localStorage.setItem("name", firstName);
-      window.location.href = "placeholder.html";
-    });
-
-    // Set initial active form based on localStorage
-    if (localStorage.getItem("username")) {
-      showForm(loginForm, loginBtn, registerForm, registerBtn);
-    } else {
-      showForm(registerForm, registerBtn, loginForm, loginBtn);
-    }
-
-    document.querySelector(".nav-menu-btn i").addEventListener('click', toggleMenu);
   </script>
 </body>
 </html>
