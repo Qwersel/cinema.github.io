@@ -48,15 +48,59 @@
           </div>
         </form>
       </div>
+
+      <div class="register-container" id="register">
+        <div class="top">
+          <span>Have an account? <a href="#" id="toLoginFromRegister">Login</a></span>
+          <header>Sign Up</header>
+        </div>
+        <form id="registerForm">
+          <div class="input-box">
+            <label for="registerFirstName">Firstname</label>
+            <input type="text" id="registerFirstName" class="input-field" placeholder="Firstname" required>
+            <i class="bx bx-user"></i>
+          </div>
+          <div class="input-box">
+            <label for="registerLastName">Lastname</label>
+            <input type="text" id="registerLastName" class="input-field" placeholder="Lastname" required>
+            <i class="bx bx-user"></i>
+          </div>
+          <div class="input-box">
+            <label for="registerEmail">Email</label>
+            <input type="email" id="registerEmail" class="input-field" placeholder="Email" required>
+            <i class="bx bx-envelope"></i>
+          </div>
+          <div class="input-box">
+            <label for="registerPassword">Password</label>
+            <input type="password" id="registerPassword" class="input-field" placeholder="Password" required>
+            <i class="bx bx-lock-alt"></i>
+          </div>
+          <div class="input-box">
+            <label for="registerConfirmPassword">Confirm Password</label>
+            <input type="password" id="registerConfirmPassword" class="input-field" placeholder="Confirm Password" required>
+            <i class="bx bx-lock-alt"></i>
+          </div>
+          <div class="input-box">
+            <button type="submit" class="btn submit">Register</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 
   <script>
     document.getElementById("loginForm").addEventListener("submit", function(event) {
         event.preventDefault();
-        const username = document.getElementById("loginUsername").value;
-        localStorage.setItem("username", username);
-        window.location.href = "profile.html"; // Redirect to profile page
+        window.location.href = "profile-index.html"; // Redirect to profile page
+    });
+
+    document.getElementById("registerForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        window.location.href = "profile-index.html"; // Redirect to profile page
+    });
+
+    document.getElementById("registerBtn").addEventListener("click", function() {
+        window.location.href = "profile-index.html"; // Redirect to profile page
     });
   </script>
 </body>
