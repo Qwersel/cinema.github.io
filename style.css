@@ -1,24 +1,20 @@
-/* General styles */
+/* General styles for both pages */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
   text-align: center;
 }
 
-header {
-  background-color: #333;
-  color: white;
-  padding: 20px;
+.catalog-title, .form-title {
+  font-family: 'Tektur', sans-serif;
+  font-size: 4rem;
+  margin: 50px 0;
 }
 
-h1 {
-  margin: 0;
-}
-
-/* Movie catalog container */
-.movie-catalog {
+/* Movie catalog container (for index.html) */
+#movie-catalog {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
@@ -30,7 +26,7 @@ h1 {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  padding: 15px;
   transition: transform 0.3s ease;
 }
 
@@ -42,14 +38,15 @@ h1 {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  border-radius: 8px;
 }
 
-.movie-card .movie-info {
-  padding: 15px;
+.movie-info {
+  padding: 10px;
 }
 
 .movie-card h2 {
-  margin: 0 0 10px;
+  margin: 10px 0;
 }
 
 .movie-card p {
@@ -57,41 +54,124 @@ h1 {
   color: #555;
 }
 
-.movie-card .release-date {
+.release-date {
   font-size: 12px;
   color: #888;
 }
 
-.movie-card .genre {
+.genre {
   font-size: 14px;
-  color: #444;
   font-weight: bold;
 }
 
-/* Add movie form styles */
-#add-movie {
+/* Alternating background colors */
+.movie-card:nth-child(3n+1) {
+  background-color: #8fc7b5; /* Replacing #e4f3ee */
+}
+
+.movie-card:nth-child(3n+2) {
+  background-color: #cfb5ed;
+}
+
+.movie-card:nth-child(3n) {
+  background-color: #ed6d23;
+}
+
+/* Form styles (for operator.html) */
+.container {
+  max-width: 600px;
+  margin: 50px auto;
   background-color: white;
   padding: 20px;
-  margin-top: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#add-movie input, #add-movie textarea, #add-movie button {
+input, textarea, button {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
+  border-radius: 5px;
   border: 1px solid #ddd;
-  border-radius: 4px;
 }
 
-#add-movie button {
-  background-color: #4CAF50;
+button {
+  background-color: #e63946; /* Matching red from index.html */
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d32f2f;
+}
+
+/* Back link styling */
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+  color: black;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Input fields style adjustments */
+input, textarea {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Add movie button (if needed on operator.html) */
+.button-container {
+  text-align: center;
+  margin-top: 45px;
+}
+
+#add-movie-button {
+  padding: 10px 30px;
+  background-color: #e63946;
   color: white;
   border: none;
+  border-radius: 50px;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-#add-movie button:hover {
-  background-color: #45a049;
+#add-movie-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Add New Movie button on index.html (Top right) */
+.button-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#add-movie-button {
+  padding: 10px 30px; /* Make it more oval */
+  background-color: #e63946; /* Red color that suits the style */
+  color: white;
+  border: none;
+  border-radius: 50px; /* Oval shape */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#add-movie-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
 }

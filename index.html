@@ -3,72 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinema Catalog</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        #movie-catalog {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 20px;
-        }
-
-        .movie-card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            width: 250px;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .movie-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .movie-info {
-            margin-top: 10px;
-        }
-
-        .movie-info h2 {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-
-        .movie-info p {
-            font-size: 14px;
-        }
-
-        #add-movie-button {
-            margin: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #add-movie-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>Movie Catalog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1 style="text-align: center; padding: 20px;">Movie Catalog</h1>
-    
-    <div id="movie-catalog"></div>
+    <h1 class="catalog-title">Movie Catalog</h1>
+    <div id="movie-catalog">
+      <div class="movie-card" style="display: block;">
+        <img src="https://images.justwatch.com/poster/241180433/s718/hachi-a-dogs-tale.jpg" alt="Movie 1">
+        <div class="movie-info">
+            <h2>Hachi: A Dog's Tale</h2>
+            <p>Professor Wilson discovers a lost Akita puppy on his way home. Despite objections from his wife, Hachi endears himself to the family and grows to be Parker's loyal companion. As their bond grows deeper, a beautiful relationship unfolds.</p>
+            <p class="release-date">Release Date: 13.06.2009</p>
+            <p class="genre">Genre: Drama</p>
+        </div>
+      </div>
 
-    <div style="text-align: center;">
+      <div class="movie-card" style="display: block;">
+        <img src="https://gfx.videobuster.de/archive/v/cJGkh-Hqq-LHmY0dM3UscPwcz0lMkawqCUyRqYlMkZpbWGZJTJGanBlZyUyRmPOZmMyYWPM67jN5WG5zeQ0ZWHU0y5qcGcmcj13rzh4aLc2/the-amazing-spider-man.jpg" alt="Movie 1">
+        <div class="movie-info">
+            <h2>The Amazing Spider-Man</h2>
+            <p>After Peter Parker is bitten by a genetically altered spider, he gains newfound, spider-like powers and ventures out to save the city from the machinations of a mysterious reptilian foe.</p>
+            <p class="release-date">Release Date: 28.06.2012</p>
+            <p class="genre">Genre: Action, Sci-Fi</p>
+        </div>
+      </div>
+
+      <div class="movie-card" style="display: block;">
+        <img src="https://m.media-amazon.com/images/M/MV5BMDEyYmE5MWMtNzg3Ny00NmVjLWJmZTUtMmUyOTliNDRiMDk2XkEyXkFqcGc@._V1_.jpg" alt="Movie 1">
+        <div class="movie-info">
+            <h2>Cats & Dogs</h2>
+            <p>A look at the top-secret, high-tech espionage war going on between cats and dogs, of which their human owners are blissfully unaware.</p>
+            <p class="release-date">Release Date: 04.07.2001</p>
+            <p class="genre">Genre: Action, Comedy, Adventure, Fantasy</p>
+        </div>
+      </div>
+
+      <div class="movie-card" style="display: block;">
+        <img src="https://m.media-amazon.com/images/M/MV5BMzAxN2Q5Y2UtMDBkZS00MGQwLWIyZDEtYTgyNGRlZmZiNjI2XkEyXkFqcGc@._V1_.jpg" alt="Movie 1">
+        <div class="movie-info">
+            <h2>Jaws</h2>
+            <p>When a massive killer shark unleashes chaos on a beach community off Long Island, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.</p>
+            <p class="release-date">Release Date: 18.12.1975</p>
+            <p class="genre">Genre: Horror, Thriller, Drama</p>
+        </div>
+      </div>
+
+      <div class="movie-card" style="display: block;">
+        <img src="https://media1.jpc.de/image/w1155/front/0/0600445030527.jpg" alt="Movie 1">
+        <div class="movie-info">
+            <h2>Shrek</h2>
+            <p>A mean lord exiles fairytale creatures to the swamp of a grumpy ogre, who must go on a quest and rescue a princess for the lord in order to get his land back.</p>
+            <p class="release-date">Release Date: 05.06.2001</p>
+            <p class="genre">Genre: Comedy, Adventure, Fantasy</p>
+        </div>
+      </div>
+
+      <div class="movie-card" style="display: block;">
+        <img src="https://i.scdn.co/image/ab67616d0000b2736885cfd3b91e4cda4313f58c" alt="Movie 1">
+        <div class="movie-info">
+            <h2>Star Wars: Episode I</h2>
+            <p>Two Jedi escape a hostile blockade to find allies and come across a young boy who may bring balance to the Force, but the long-dormant Sith resurface to claim their former glory.</p>
+            <p class="release-date">Release Date: 19.08.1999</p>
+            <p class="genre">Genre: Action, Adventure, Sci-Fi, Fantasy</p>
+        </div>
+      </div>
+
+      <div class="movie-card" style="display: block;">
+        <img src="https://i.ytimg.com/vi/A1FtRovJMxk/sddefault.jpg" alt="Movie 1">
+        <div class="movie-info">
+            <h2>Titanic</h2>
+            <p>A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.</p>
+            <p class="release-date">Release Date: 08.01.1998</p>
+            <p class="genre">Genre: Tragedy, Drama, Romance </p>
+        </div>
+      </div>
+
+      <div class="movie-card" style="display: block;">
+        <img src="https://i0.wp.com/www.heyuguys.com/images/2013/11/Walking-with-Dinosaurs-The-3D-Movie-Quad-Poster.jpg?fit=960%2C719&ssl=1" alt="Movie 1">
+        <div class="movie-info">
+            <h2>Walking with Dinosaurus 3D</h2>
+            <p>See and feel what it was like when dinosaurs ruled the Earth, in a story where an underdog dino triumphs to become a hero for the ages.</p>
+            <p class="release-date">Release Date: 19.02.2013</p>
+            <p class="genre">Genre: Adventure, Animation, Comedy </p>
+        </div>
+      </div>
+
+      <div class="movie-card" style="display: block;">
+        <img src="https://m.media-amazon.com/images/M/MV5BNTlkYjBlZTctZjg2YS00NDMzLTlkMTMtNWExMGYyOTliMmEzXkEyXkFqcGc@._V1_.jpg" alt="Movie 1">
+        <div class="movie-info">
+            <h2>Murder on the Orient Express</h2>
+            <p>When a murder occurs on the train on which he's travelling, celebrated detective Hercule Poirot is recruited to solve the case.</p>
+            <p class="release-date">Release Date: 09.10.2017</p>
+            <p class="genre">Genre: Drama, Detective, Thriller </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-container">
         <button id="add-movie-button" onclick="window.location.href='operator.html'">Add a New Movie</button>
     </div>
 
