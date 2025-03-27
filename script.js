@@ -1,4 +1,3 @@
-// Handle the form submission on the operator page
 document.getElementById('movie-form')?.addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -28,11 +27,9 @@ document.getElementById('movie-form')?.addEventListener('submit', function (even
 });
 
 
-// Function to load movies on the main page
 function loadMovies() {
     const movieCatalog = document.getElementById('movie-catalog');
 
-    // Preserve existing HTML (static cards) before appending new ones
     let movies = JSON.parse(localStorage.getItem('movies')) || [];
 
     movies.forEach((movie) => {
